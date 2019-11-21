@@ -44,7 +44,9 @@ defmodule GtfsServer.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.6"},
-      {:exprotobuf, "~> 1.2"}
+      {:exprotobuf, "~> 1.2"},
+      {:quantum, "~> 2.3"},
+      {:timex, "~> 3.6"}
     ]
   end
 
