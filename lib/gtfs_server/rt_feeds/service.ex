@@ -1,6 +1,6 @@
-defmodule GtfsServer.Agencies.Trimet.Service do
+defmodule GtfsServer.RtFeeds.Client.Service do
   alias Utility
-  alias GtfsServer.Agencies.RtFeedCache
+  alias GtfsServer.RtFeeds.Cache
   alias GtfsServer.Protobufs.FeedEntity
 
   def dedupe_feed(feed_entities, feed_type) do
@@ -28,25 +28,25 @@ defmodule GtfsServer.Agencies.Trimet.Service do
   defp check_cache(%FeedEntity{} = feed_entity, :trimet_vehicle_posistion_feed = feed_type) do
     feed_entity
       |> Utility.create_vehicle_position_key
-      |> RtFeedCache.lookup(feed_type)
+      |> Cache.lookup(feed_type)
   end
 
   defp check_cache(%FeedEntity{} = feed_entity, :trimet_alert_feed = feed_type) do
     feed_entity
       |> Utility.create_alert_key
-      |> RtFeedCache.lookup(feed_type)
+      |> Cache.lookup(feed_type)
   end
 
   defp update_cache(%FeedEntity{} = feed_entity, :trimet_vehicle_posistion_feed = feed_type) do
     feed_entity
       |> Utility.create_vehicle_position_key
-      |> RtFeedCache.insert(feed_type)
+      |> Cache.insert(feed_type)
   end
 
   defp update_cache(%FeedEntity{} = feed_entity, :trimet_alert_feed = feed_type) do
     feed_entity
       |> Utility.create_alert_key
-      |> RtFeedCache.insert(feed_type)
+      |> Cache.insert(feed_type)
   end
 
   #refactor placeholder functions:

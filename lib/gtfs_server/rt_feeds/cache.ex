@@ -1,4 +1,4 @@
-defmodule GtfsServer.Agencies.RtFeedCache do
+defmodule GtfsServer.RtFeeds.Cache do
   use GenServer
 
   @default_name TrimetVehiclePositionsCache

@@ -1,8 +1,8 @@
-defmodule GtfsServer.Agencies.Trimet.Client do
+defmodule GtfsServer.RtFeeds.Client do
   use HTTPoison.Base
   alias GtfsServer.Config
   alias GtfsServer.Protobufs.FeedMessage
-  alias GtfsServer.Agencies.Trimet
+  alias GtfsServer.RtFeeds
 
   require Logger
 
@@ -25,7 +25,7 @@ defmodule GtfsServer.Agencies.Trimet.Client do
   end
 
   def fetch(endpoint) do
-    case Trimet.Client.get(endpoint, [], hackney: [pool: :trimet_gtfs_pool]) do
+    case RtFeeds.Client.get(endpoint, [], hackney: [pool: :trimet_gtfs_pool]) do
       {:ok, %{status_code: 200, body: %{entity: entities}}} -> {:ok, entities}
       {:ok, %{status_code: 403, body: body}} -> {:error, body}
     end

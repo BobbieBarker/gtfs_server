@@ -10,7 +10,10 @@ defmodule GtfsServer.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        test: :test
+      ]
     ]
   end
 
@@ -46,7 +49,10 @@ defmodule GtfsServer.MixProject do
       {:httpoison, "~> 1.6"},
       {:exprotobuf, "~> 1.2"},
       {:quantum, "~> 2.3"},
-      {:timex, "~> 3.6"}
+      {:timex, "~> 3.6"},
+      {:ecto_enum, "~> 1.4"},
+      {:geo_postgis, "~> 3.3"},
+      {:ecto_shorts, "~> 0.1.5"}
     ]
   end
 

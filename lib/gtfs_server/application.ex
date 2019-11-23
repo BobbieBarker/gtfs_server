@@ -11,8 +11,8 @@ defmodule GtfsServer.Application do
       GtfsServer.Scheduler,
       {Task.Supervisor, name: Task.TrimetVehiclePositionConsumerSupervisor, restart: :transient},
       {Task.Supervisor, name: Task.TrimetAlertConsumerSupervisor, restart: :transient},
-      Supervisor.child_spec({GtfsServer.Agencies.RtFeedCache, [name: :trimet_vehicle_posistion_feed]}, id: :trimet_vehicle_posistion_feed),
-      Supervisor.child_spec({GtfsServer.Agencies.RtFeedCache, [name: :trimet_alert_feed]}, id: :trimet_alert_feed),
+      Supervisor.child_spec({GtfsServer.RtFeeds.Cache, [name: :trimet_vehicle_posistion_feed]}, id: :trimet_vehicle_posistion_feed),
+      Supervisor.child_spec({GtfsServer.RtFeeds.Cache, [name: :trimet_alert_feed]}, id: :trimet_alert_feed),
       {DynamicSupervisor, name: GtfsServer.RtFeedSupervisor, strategy: :one_for_one},
       # connection pool for trimet
       :hackney_pool.child_spec(:trimet_gtfs_pool, timeout: 15000, max_connections: 100),

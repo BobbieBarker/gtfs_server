@@ -6,6 +6,8 @@ config :gtfs_server, GtfsServer.Repo,
   password: "postgres",
   database: "gtfs_server_test",
   hostname: "localhost",
+  adapter: Ecto.Adapters.Postgres,
+  types: GtfsServer.PostgresTypes,
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
@@ -15,4 +17,8 @@ config :gtfs_server, GtfsServerWeb.Endpoint,
   server: false
 
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, level: :debug
+
+config :ecto_shorts,
+  repo: GtfsServer.Repo,
+  error_module: EctoShorts.Actions.Error
