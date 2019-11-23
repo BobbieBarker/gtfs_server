@@ -1,9 +1,9 @@
-defmodule GtfsServer.Agencies.Trimet.Producer do
+defmodule GtfsServer.RtFeeds.Consumer do
   require Logger
 
-  import GtfsServer.Agencies.Trimet.Service, only: [dedupe_feed: 2, process_feed: 2]
+  import GtfsServer.RtFeeds.Client.Service, only: [dedupe_feed: 2, process_feed: 2]
 
-  alias GtfsServer.Agencies.Trimet.Client
+  alias GtfsServer.RtFeeds.Client
 
   def get_next_feed_message(:trimet_vehicle_posistion_feed = feed_type) do
     with {:ok, entities} <- Client.get__vehicle_position_feed(feed_type) do
