@@ -44,10 +44,8 @@ defmodule GtfsServer.Agencies.Agency do
     |> Repo.preload([:gtfs_rt_configs, :routes])
     |> cast(attrs, @available_fields)
     |> validate_required(@required_fields)
+    |> unique_constraint(:agency_id)
     |> cast_assoc(:gtfs_rt_configs)
     |> cast_assoc(:routes)
   end
 end
-
-# map agency_name --> agency_id if there is none present.
-

@@ -34,8 +34,6 @@ defmodule GtfsServer.MixProject do
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
-  # TODO setup ecto // DB config stuff
-  # TODO setup absinthe
   defp deps do
     [
       {:phoenix, "~> 1.4.9"},
@@ -52,7 +50,12 @@ defmodule GtfsServer.MixProject do
       {:timex, "~> 3.6"},
       {:ecto_enum, "~> 1.4"},
       {:geo_postgis, "~> 3.3"},
-      {:ecto_shorts, "~> 0.1.5"}
+      {:ecto_shorts, "~> 0.1.5"},
+      {:absinthe, "~> 1.4"},
+      {:absinthe_plug, "~> 1.4"},
+      {:absinthe_phoenix, "~> 1.4.0"},
+      {:dataloader, "~> 1.0"},
+      {:nimble_csv, "~> 0.6.0"}
     ]
   end
 

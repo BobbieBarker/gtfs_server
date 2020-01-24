@@ -1,6 +1,7 @@
 defmodule GtfsServer.Agencies do
   alias EctoShorts.Actions
   alias GtfsServer.Agencies
+  alias GtfsServer.UploadProcessor
 
   @moduledoc """
     context defines the API for interacting with our internal representation
@@ -63,6 +64,10 @@ defmodule GtfsServer.Agencies do
 
   def create_stop_time(params) do
     Actions.create(Agencies.StopTime, params)
+  end
+
+  def process_gtfs_upload(%Plug.Upload{} = upload) do
+    UploadProcessor.process(upload.path)
   end
 
   defp convert_stop_code_to_string(params) do
