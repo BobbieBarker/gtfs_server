@@ -29,18 +29,18 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :gtfs_server, GtfsServer.Scheduler,
-  debug_logging: false,
-  jobs: [
-    trimet_vehicle_posistion_feed: [
-      schedule: {:extended, "*/2"}, # Runs every 2 seconds,
-      task: {GtfsServer.RtFeeds.Consumer, :get_next_feed_message, [:trimet_vehicle_posistion_feed]
-    }],
-    trimet_alert_feed: [
-      schedule: {:extended, "*/2"}, # Runs every 2 seconds,
-      task: {GtfsServer.RtFeeds.Consumer, :get_next_feed_message, [:trimet_alert_feed]
-    }]
-  ]
+# config :gtfs_server, GtfsServer.Scheduler,
+#   debug_logging: false,
+#   jobs: [
+#     trimet_vehicle_posistion_feed: [
+#       schedule: {:extended, "*/2"}, # Runs every 2 seconds,
+#       task: {GtfsServer.RtFeeds.Consumer, :get_next_feed_message, [:trimet_vehicle_posistion_feed]
+#     }],
+#     trimet_alert_feed: [
+#       schedule: {:extended, "*/2"}, # Runs every 2 seconds,
+#       task: {GtfsServer.RtFeeds.Consumer, :get_next_feed_message, [:trimet_alert_feed]
+#     }]
+#   ]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

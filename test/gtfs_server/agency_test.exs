@@ -58,7 +58,6 @@ defmodule GtfsServer.AgenciesTest do
       |> Repo.get_by(agency_id: "TRIMET")
       |> Repo.preload(:gtfs_rt_configs)
 
-      IO.inspect agency
       assert agency.agency_name === "TriMet"
       assert agency.agency_timezone === "America/Los_Angeles"
       assert agency.gtfs_rt_configs.base_url === "some_url"
@@ -80,7 +79,7 @@ defmodule GtfsServer.AgenciesTest do
 
   describe "&create_stop/1" do
     test "creates a stop in the database" do
-      assert {:ok, _stop} = Agencies.create_stop(%{
+      assert {:ok, stop} = Agencies.create_stop(%{
         stop_id: 12,
         stop_name: "TriMet",
         stop_url: "http://trimet.org/",

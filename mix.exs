@@ -54,7 +54,8 @@ defmodule GtfsServer.MixProject do
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
       {:absinthe_phoenix, "~> 1.4.0"},
-      {:dataloader, "~> 1.0"}
+      {:dataloader, "~> 1.0"},
+      {:nimble_csv, "~> 0.6.0"}
     ]
   end
 
